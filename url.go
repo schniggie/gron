@@ -17,10 +17,17 @@ func validURL(url string) bool {
 }
 
 func getURL(getURL string, insecure bool, proxy string) (io.Reader, error) {
-	proxyURL, err := url.Parse(proxy)
-	tr := &http.Transport{
-		TLSClientConfig: &tls.Config{InsecureSkipVerify: insecure},
-		Proxy: http.ProxyURL(proxyURL),
+	if proxy != "" {
+		proxyURL, err := url.Parse(proxy)
+		tr := &http.Transport{
+			TLSClientConfig: &tls.Config{InsecureSkipVerify: insecure},
+			Proxy: http.ProxyURL(proxyURL),
+		}
+	}
+	else {
+		tr := &http.Transport{
+			TLSClientConfig: &tls.Config{InsecureSkipVerify: insecure},
+		}
 	}
 	client := http.Client{
 		Transport: tr,
