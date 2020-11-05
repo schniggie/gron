@@ -23,8 +23,7 @@ func getURL(getURL string, insecure bool, proxy string) (io.Reader, error) {
 			TLSClientConfig: &tls.Config{InsecureSkipVerify: insecure},
 			Proxy: http.ProxyURL(proxyURL),
 		}
-	}
-	else {
+	} else {
 		tr := &http.Transport{
 			TLSClientConfig: &tls.Config{InsecureSkipVerify: insecure},
 		}
