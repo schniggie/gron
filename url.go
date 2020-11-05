@@ -15,9 +15,11 @@ func validURL(url string) bool {
 	return r.MatchString(url)
 }
 
-func getURL(url string, insecure bool) (io.Reader, error) {
+func getURL(url string, insecure bool, proxy string) (io.Reader, error) {
+	proxyURL, err := url.Parse(proxy)
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: insecure},
+		Proxy: http.ProxyURL(proxyURL),
 	}
 	client := http.Client{
 		Transport: tr,
