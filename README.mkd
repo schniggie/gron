@@ -1,4 +1,4 @@
-# gron
+# gron with proxy support
 [![Build Status](https://travis-ci.org/tomnomnom/gron.svg?branch=master)](https://travis-ci.org/tomnomnom/gron)
 
 Make JSON greppable!
@@ -225,14 +225,16 @@ Options:
       --no-sort    Don't sort output (faster)
       --version    Print version information
 
+  -p, --proxy      Use proxy, eg. http://127.0.0.1:8080
+
 Exit Codes:
-  0	OK
-  1	Failed to open file
-  2	Failed to read input
-  3	Failed to form statements
-  4	Failed to fetch URL
-  5	Failed to parse statements
-  6	Failed to encode JSON
+  0     OK
+  1     Failed to open file
+  2     Failed to read input
+  3     Failed to form statements
+  4     Failed to fetch URL
+  5     Failed to parse statements
+  6     Failed to encode JSON
 
 Examples:
   gron /tmp/apiresponse.json
