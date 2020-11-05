@@ -16,7 +16,7 @@ func validURL(url string) bool {
 	return r.MatchString(url)
 }
 
-func getURL(url string, insecure bool, proxy string) (io.Reader, error) {
+func getURL(getURL string, insecure bool, proxy string) (io.Reader, error) {
 	proxyURL, err := url.Parse(proxy)
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: insecure},
@@ -27,7 +27,7 @@ func getURL(url string, insecure bool, proxy string) (io.Reader, error) {
 		Timeout:   20 * time.Second,
 	}
 
-	req, err := http.NewRequest("GET", url, nil)
+	req, err := http.NewRequest("GET", getURL, nil)
 	if err != nil {
 		return nil, err
 	}
