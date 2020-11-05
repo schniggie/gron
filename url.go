@@ -20,12 +20,15 @@ func getURL(getURL string, insecure bool, proxy string) (io.Reader, error) {
 	var tr = &http.Transport{}
 	if proxy != "" {
 		proxyURL, err := url.Parse(proxy)
+		if err != nil {
+			return nil, err
+		}
 		tr = &http.Transport{
 			TLSClientConfig: &tls.Config{InsecureSkipVerify: insecure},
 			Proxy: http.ProxyURL(proxyURL),
 		}
 	} else {
-		tr := &http.Transport{
+		tr = &http.Transport{
 			TLSClientConfig: &tls.Config{InsecureSkipVerify: insecure},
 		}
 	}
