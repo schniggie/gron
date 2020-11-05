@@ -130,7 +130,7 @@ func main() {
 	if filename == "" || filename == "-" {
 		rawInput = os.Stdin
 	} else if validURL(filename) {
-		r, err := getURL(filename, insecureFlag)
+		r, err := getURL(filename, insecureFlag, proxy)
 		if err != nil {
 			fatal(exitFetchURL, err)
 		}
