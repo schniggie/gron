@@ -63,6 +63,7 @@ func init() {
 		h += "  -j, --json       Represent gron data as JSON stream\n"
 		h += "      --no-sort    Don't sort output (faster)\n"
 		h += "      --version    Print version information\n\n"
+		h += "  -p, --proxy      Use proxy, eg. http://127.0.0.1:8080\n\n"
 
 		h += "Exit Codes:\n"
 		h += fmt.Sprintf("  %d\t%s\n", exitOK, "OK")
@@ -94,6 +95,7 @@ func main() {
 		versionFlag    bool
 		insecureFlag   bool
 		jsonFlag       bool
+		proxy          string
 	)
 
 	flag.BoolVar(&ungronFlag, "ungron", false, "")
@@ -110,6 +112,8 @@ func main() {
 	flag.BoolVar(&insecureFlag, "insecure", false, "")
 	flag.BoolVar(&jsonFlag, "j", false, "")
 	flag.BoolVar(&jsonFlag, "json", false, "")
+	flag.StringVar(&proxy,"p","","")
+	flag.StringVar(&proxy,"proxy","","")
 
 	flag.Parse()
 
