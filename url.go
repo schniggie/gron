@@ -17,6 +17,7 @@ func validURL(url string) bool {
 }
 
 func getURL(getURL string, insecure bool, proxy string) (io.Reader, error) {
+	var tr = &http.Transport{}
 	if proxy != "" {
 		proxyURL, err := url.Parse(proxy)
 		tr := &http.Transport{
